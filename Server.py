@@ -2,7 +2,7 @@ import socket
 import threading
 
 SERVER_HOST = '0.0.0.0'  # Listen on all available network interfaces
-SERVER_PORT = 5555
+SERVER_PORT = 8000
 
 clients = {}  # Dictionary to store client information (username: client_socket)
 

@@ -18,7 +18,7 @@ def receive_messages(client_socket):
 
 def main():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect(SERVER_HOST , SERVER_PORT)
+    client_socket.connect((SERVER_HOST, SERVER_PORT))
     print("[+] Connected to the server.")
 
     username = input("Enter your username: ")

@@ -1,8 +1,8 @@
 import socket
 import threading
 
-SERVER_HOST ='192.168.80.129all'
-SERVER_PORT = '8000'
+SERVER_HOST ='192.168.80.129'
+SERVER_PORT = 8000
 headers = {
     'User-Agent': 'Mozilla',  # Example header
        # Add any custom headers you need

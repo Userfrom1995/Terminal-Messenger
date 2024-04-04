@@ -1,8 +1,8 @@
 import socket
 import threading
 
-SERVER_HOST = '172.31.199.255'
-SERVER_PORT = 8000
+SERVER_HOST = "3d0ca80b-6c3c-4513-8931-ce6156d28272-00-i27rtb4ksw1l.spock.replit.dev"
+SERVER_PORT = 0000
 
 def receive_messages(client_socket):
     while True:
@@ -13,7 +13,7 @@ def receive_messages(client_socket):
 
 def main():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((SERVER_HOST, SERVER_PORT))
+    client_socket.connect(SERVER_HOST)
     print("[+] Connected to the server.")
 
     username = input("Enter your username: ")

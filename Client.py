@@ -1,8 +1,13 @@
 import socket
 import threading
 
-SERVER_HOST = "3d0ca80b-6c3c-4513-8931-ce6156d28272-00-i27rtb4ksw1l.spock.replit.dev"
-SERVER_PORT = 0000
+SERVER_HOST = '10.188.123.122'
+SERVER_PORT = 8000
+headers = {
+    'User-Agent': 'Mozilla',  # Example header
+       # Add any custom headers you need
+}
+
 
 def receive_messages(client_socket):
     while True:

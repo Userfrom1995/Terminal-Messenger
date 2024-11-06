@@ -2,7 +2,7 @@
 import socket 
 import threading 
 import sys 
-from substitution_cipher import encrypt_mssg,decrypt_mssg 
+
 def receive_messages(client_socket): 
     while True: 
         try: 
@@ -37,5 +37,5 @@ def main():
             sys.exit(0) 
         client_socket.sendall(message.encode('utf-8')) 
  
-if name == "__main__": 
+if __name__ == "__main__": 
     main()

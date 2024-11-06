@@ -17,7 +17,8 @@ def handle_client(client_socket):
             data = client_socket.recv(1024) 
             if not data: 
                 break 
-            message = data.decode('utf-8') 
+            message = data.decode('utf-8')
+            
             print(f"Received message from {name}: {message}") 
             broadcast(f"{name}: {message}", client_socket) 
         except: 
@@ -49,5 +50,5 @@ def main():
         client_handler = threading.Thread(target=handle_client, args=(client_socket,)) 
         client_handler.start() 
  
-if name == "__main__": 
+if __name__ == "__main__": 
     main()

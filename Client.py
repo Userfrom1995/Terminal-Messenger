@@ -1,35 +1,43 @@
 import socket
 import threading
-
-SERVER_HOST ='192.168.80.129'
-SERVER_PORT = 8000
-headers = {
-    'User-Agent': 'Mozilla',  # Example header
-       # Add any custom headers you need
-}
+import sys
 
 
 def receive_messages(client_socket):
     while True:
-        message = client_socket.recv(1024).decode()
-        if not message:
+        try:
+            data = client_socket.recv(1024)
+            if data:
+                print(f"\n{data.decode('utf-8')}")
+        except:
+            print("Disconnected from server")
             break
-        print(message)
+
 
 def main():
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((SERVER_HOST, SERVER_PORT))
-    print("[+] Connected to the server.")
+    if len(sys.argv) != 2:
+        print("Usage: python client.py [YourName]")
+        sys.exit(1)
 
-    username = input("Enter your username: ")
-    client_socket.send(username.encode())  # Send username to server
+    name = sys.argv[1]
+
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    host = '192.168.205.126'
+    port = 9999
+    client_socket.connect((host, port))
+    client_socket.sendall(name.encode('utf-8'))
 
     receive_thread = threading.Thread(target=receive_messages, args=(client_socket,))
     receive_thread.start()
 
     while True:
         message = input()
-        client_socket.send(message.encode())
+        if message.lower() == 'exit':
+            print("Exiting chat...")
+            client_socket.close()
+            sys.exit(0)
+        client_socket.sendall(message.encode('utf-8'))
+
 
 if __name__ == "__main__":
     main()
